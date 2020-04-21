@@ -13,5 +13,8 @@ public class TaskController {
 
     public TaskController(final TaskRepository repository) {
         this.repository = repository;
+
     }
+
+    //tutaj dodaje komentarz do sprawdzenia czy wszystko się pushuje na githuba
 }
