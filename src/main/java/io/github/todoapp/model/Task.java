@@ -1,8 +1,5 @@
 package io.github.todoapp.model;
 
-import net.minidev.json.JSONUtil;
-import org.springframework.scheduling.annotation.Scheduled;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 

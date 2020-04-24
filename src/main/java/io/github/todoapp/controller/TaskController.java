@@ -8,9 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +32,22 @@ public class TaskController {
     ResponseEntity<List<Task>> readAllTasks(Pageable page){
         logger.info("Custom pageable");
         return ResponseEntity.ok(repository.findAll(page).getContent());
+    }
+
+    @PutMapping("/tasks/{id}")
+    ResponseEntity<?> updateTask(@PathVariable int id, @RequestBody Task toUpdate){
+        repository.save(toUpdate);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/tasks/{id}")
+    ResponseEntity<?> getTask(@PathVariable int id){
+        return ResponseEntity.ok(repository.findById(id));
+    }
+
+    @PostMapping("/tasks")
+    ResponseEntity<?> createTask(@RequestBody Task createdTask){
+        return ResponseEntity.ok(repository.save(createdTask));
     }
 
 }
